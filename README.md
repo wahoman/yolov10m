@@ -12,7 +12,7 @@
 
 ![성능 플롯](readme%20img/yolov10%20plot.png)
 
-## 바운딩 박스 탐지 
+## 바운딩 박스 탐지
 
 모델의 바운딩 박스 탐지 성능을 테스트하고 시각화한 결과는 다음과 같습니다:
 
@@ -24,12 +24,25 @@
 
 ![세그멘테이션 플롯](readme%20img/yolov8-plot.png)
 
-## 세그멘테이션 결과
+### 세그멘테이션 결과
 
 세그멘테이션을 적용한 결과는 다음과 같습니다:
 
 ![세그멘테이션 예시](readme%20img/yolov8-seg.png)
 
-이와 같은 과정을 통해 YOLOv10m 모델과 YOLOv8-seg 모델을 활용한 커스텀 객체 탐지를 성공적으로 수행하였습니다. 앞으로 더 다양한 데이터와 최신 모델을 활용하여 성능을 더욱 향상시킬 계획입니다.
+### Segmentation 모델을 위한 정교한 라벨링 필요성 발견
 
-GitHub 주소: [https://github.com/wahoman/yolov10m.git](https://github.com/wahoman/yolov10m.git)
+프로젝트 진행 중 YOLOv8-seg 모델을 사용하여 세그멘테이션을 학습하는 과정에서, 기존 라벨링된 데이터 중 일부는 성공적으로 동작했지만 일부는 실패하는 현상을 발견했습니다. 자세한 분석을 거쳐 Segmentation 모델을 제대로 활용하기 위해서는 단순한 Bounding Box가 아닌 정교한 polygon 형태의 라벨링이 필요하다는 결론을 얻었습니다.
+
+- **Bounding Box 라벨링**: 실패했던 데이터는 단순한 사각형 형태의 Bounding Box로 라벨링되어 있었습니다.
+
+![Bounding Box 예시](readme%20img/bad.png)
+
+- **Polygon 라벨링**: 성공적으로 학습된 데이터는 객체의 경계를 따라 정확하게 그려진 polygon 형태로 라벨링되어 있었습니다.
+
+![Polygon 예시](readme%20img/good.png)
+
+### 데이터셋 변환 및 재학습
+
+1. **Roboflow를 이용한 데이터셋 변환**: 기존 Bounding Box로만 라벨링된 데이터를 정교한 polygon 형태로 변환하기 위해 Roboflow를 사용했습니다.
+   - Roboflow에 기존 데이터를 업로드하고, polygon 형태의 라벨링을 생성한 후 YOLOv8 형식으로 다시 다운로드했습니다.
