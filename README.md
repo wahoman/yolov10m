@@ -32,6 +32,28 @@
 
 
 
+### Segmentation 모델을 위한 정교한 라벨링 필요성 발견
+
+프로젝트 진행 중 YOLOv8-seg 모델을 사용하여 세그멘테이션을 학습하는 과정에서, 기존 라벨링된 데이터 중 일부는 성공적으로 동작했지만 일부는 실패하는 현상을 발견했습니다. 자세한 분석을 거쳐 Segmentation 모델을 제대로 활용하기 위해서는 단순한 Bounding Box가 아닌 정교한 polygon 형태의 라벨링이 필요하다는 결론을 얻었습니다.
+
+- **Bounding Box 라벨링**: 실패했던 데이터는 단순한 사각형 형태의 Bounding Box로 라벨링되어 있었습니다.
+
+![Bounding Box 예시](readme%20img/bad.png)
+
+- **Polygon 라벨링**: 성공적으로 학습된 데이터는 객체의 경계를 따라 정확하게 그려진 polygon 형태로 라벨링되어 있었습니다.
+
+![Polygon 예시](readme%20img/good.png)
+
+### 데이터셋 변환 및 재학습
+
+1. **Roboflow를 이용한 데이터셋 변환**: 기존 Bounding Box로만 라벨링된 데이터를 정교한 polygon 형태로 변환하기 위해 Roboflow를 사용했습니다.
+   - Roboflow에 기존 데이터를 업로드하고, polygon 형태의 라벨링을 생성한 후 YOLOv8 형식으로 다시 다운로드했습니다.
+
+
+
+
+
+
 
 
 ultralytics 경로설정
@@ -52,21 +74,4 @@ test2.ipynb파일은 됨 . 물론 x-ray데이터
 그래서 오류가 뜨는거지 .
 
 
-지금 sst랩 덷이터 train데이터 2571장만 instance segmantation 했는데 이건왜또되냐 -> 데이터설정할댸 instance segmentation 으로 해야됨
-
-### Segmentation 모델을 위한 정교한 라벨링 필요성 발견
-
-프로젝트 진행 중 YOLOv8-seg 모델을 사용하여 세그멘테이션을 학습하는 과정에서, 기존 라벨링된 데이터 중 일부는 성공적으로 동작했지만 일부는 실패하는 현상을 발견했습니다. 자세한 분석을 거쳐 Segmentation 모델을 제대로 활용하기 위해서는 단순한 Bounding Box가 아닌 정교한 polygon 형태의 라벨링이 필요하다는 결론을 얻었습니다.
-
-- **Bounding Box 라벨링**: 실패했던 데이터는 단순한 사각형 형태의 Bounding Box로 라벨링되어 있었습니다.
-
-![Bounding Box 예시](readme%20img/bad.png)
-
-- **Polygon 라벨링**: 성공적으로 학습된 데이터는 객체의 경계를 따라 정확하게 그려진 polygon 형태로 라벨링되어 있었습니다.
-
-![Polygon 예시](readme%20img/good.png)
-
-### 데이터셋 변환 및 재학습
-
-1. **Roboflow를 이용한 데이터셋 변환**: 기존 Bounding Box로만 라벨링된 데이터를 정교한 polygon 형태로 변환하기 위해 Roboflow를 사용했습니다.
-   - Roboflow에 기존 데이터를 업로드하고, polygon 형태의 라벨링을 생성한 후 YOLOv8 형식으로 다시 다운로드했습니다.
+지금 sst랩 덷이터 train데이터 2571장만 instance segmantation 했는데 이건왜또되냐
