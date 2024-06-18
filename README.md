@@ -73,5 +73,8 @@ test2.ipynb파일은 됨 . 물론 x-ray데이터
 혹시 valid나 test의 라벨을 맞춰야 하는데 이 라벨이 train에 없는건 아닐까
 그래서 오류가 뜨는거지 .
 
+일단 여기에 쓸께여 나중에 시간날때 템플릿에 옮김
+6/18 기존 3600장 데이터  정교하게 segmentation 하기 위해 roboflow에 데이터셋 나눠서 분업할 수 있게 준비갈완료
+
 
 지금 sst랩 덷이터 train데이터 2571장만 instance segmantation 했는데 이건왜또되냐
