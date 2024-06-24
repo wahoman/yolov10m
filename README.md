@@ -15,7 +15,7 @@
 - **6월 12일**: ❌ `ex-1` 데이터는 segmentation 불가, ✅ `x-ray2`, `a-1` 데이터는 segmentation 가능. ⚠️ 데이터 augment 시 학습 오류 발생, 미augment 데이터는 정상 학습.
 - **6월 13일**: 🛠️ YOLO 프로젝트를 Instance Segmentation으로 설정 시 오류 없이 정상 동작.
 - **6월 17일 ~ 21일**: 📈 총 3700장 데이터를 polygon 형태로 정밀 라벨링 완료, 모델 학습 준비 완료.
-
+- **6월 24일**: 총 3700장 데이터 라벨링 1차 검수 후, rotation, horizon등의 방식을 이용해서 augmentation. 총 8400여장 데이터 1000epoch. 1epoch당 약 2분 30초
 ---
 
 ## 데이터 준비 및 증강
