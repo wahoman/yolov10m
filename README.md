@@ -64,4 +64,4 @@
 
 기존 모델에 비해 폭발물 자체의 위치를 탐지하는 비율은 미세하게 낮지만, 어떤 폭발물인지 정확히 탐지하는 비율이 7% 가까이 상승했습니다. 또한, 어떤 형태의 폭발물인지 segmentation까지 가능한 모델을 성공적으로 개발할 수 있었습니다.
 
-![result](readme%20img/result.png)
+![result](readme%20img/result1.png)
